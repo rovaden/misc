@@ -2,15 +2,18 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 class part2 {
   public static void main(String[] args) {
     File file = new File("src/loremimpsum.txt");
     // sentencePrintCount(file);
     // averageLetterPos(file);
-    topLetterFind(file);
+    // topLetterFind(file);
+    // commonPredecessor(file);
     // System.out.println(exponentiate(2, -2));
   }
 
@@ -44,7 +47,7 @@ class part2 {
       int avg = 0;
       int qty = 0;
       for (int r = 0; r < list.size(); r++){
-        String[] sentences = list.get(0).split("\\.\\s+");
+        String[] sentences = list.get(r).split("\\.\\s+");
         for (int i = 0; i < sentences.length; i ++){
           char[] letters = sentences[i].toCharArray();   
           for (int k = 0; k < letters.length; k++){
@@ -73,7 +76,7 @@ class part2 {
       int topCt = 0;
       String word = "";
       for (int r = 0; r < list.size(); r++){
-        String[] words = list.get(0).split("\\s+");
+        String[] words = list.get(r).split("\\s+");
         for (int k = 0; k < words.length; k++){
           int count = 0;
           char[] letters = words[k].toCharArray();
@@ -88,6 +91,32 @@ class part2 {
       }
       word = word.replaceAll("\\.", "");
       System.out.println(alphabet[j] + ": " + ((word!="")?word:"not found"));
+    }
+  }
+
+  static void commonPredecessor(File param){
+    List<String> list = Collections.<String>emptyList();
+    try{
+        list = Files.readAllLines(param.toPath(), StandardCharsets.UTF_8);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    String everything = list.toString().replaceAll("]", "").replaceAll("\\.", "");
+    String[] words = everything.split("\\s+");
+    System.out.println(words.length);
+    for (int k = 0; k < words.length; k++){
+      ArrayList<String> predecessor = new ArrayList<>();
+      for (int p = 0; p < words.length; p++){
+        if ((p+2) > words.length) break;
+        if (words[p+1] == words[k]) predecessor.add(words[p]);
+      }
+      int topCt = 0;
+      String word = "";
+      for (int j = 0; j < predecessor.size(); j++){
+        int count = Collections.frequency(predecessor, predecessor.get(j));
+        if (count > topCt) word = predecessor.get(j);
+      }
+      System.out.println(words[k] + " : " + ((word!="")?word:"not found"));
     }
   }
 
