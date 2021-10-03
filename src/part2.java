@@ -9,8 +9,8 @@ class part2 {
   public static void main(String[] args) {
     File file = new File("src/loremimpsum.txt");
     // sentencePrintCount(file);
-    // averageLetterPos(file);
-    System.out.println(exponentiate(2, -2));
+    averageLetterPos(file);
+    // System.out.println(exponentiate(2, -2));
   }
 
   static void sentencePrintCount (File param){
@@ -20,11 +20,14 @@ class part2 {
     } catch (IOException e) {
         e.printStackTrace();
     }
-    String[] sentences = list.get(0).split("\\.");
-    System.out.println(" sentences" + sentences);
-    for (int i = 0; i < sentences.length; i ++){
-      String[] words = sentences[i].split("\\+s");      
-      System.out.println(sentences[i] + "." + " words: " + words.length);
+    System.out.println(list.get(0));
+    for(int j = 0; j < list.size(); j++){
+      String[] sentences = list.get(j).split("\\.\\s+");
+      System.out.println(sentences.length);
+      for (int i = 0; i < sentences.length; i ++){
+        String[] words = sentences[i].split("\\s+");      
+        System.out.println(sentences[i] + "." + " words: " + words.length);
+      }
     }
   }
 
@@ -35,27 +38,29 @@ class part2 {
     } catch (IOException e) {
         e.printStackTrace();
     }
-    String[] sentences = list.get(0).split("\\.\\s+");
-    System.out.println(sentences.toString());
     char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
     for (int j = 0; j < alphabet.length; j++){  
       int avg = 0;
       int qty = 0;
-      for (int i = 0; i < sentences.length; i ++){
-        char[] letters = sentences[i].toCharArray();   
-        for (int k = 0; k < letters.length; k++){
-          if (letters[k] == alphabet[j]){ 
-            avg += k;
-            qty++;
-          }
-        }  
+      for (int r = 0; r < list.size(); r++){
+        String[] sentences = list.get(0).split("\\.\\s+");
+        for (int i = 0; i < sentences.length; i ++){
+          char[] letters = sentences[i].toCharArray();   
+          for (int k = 0; k < letters.length; k++){
+            if (letters[k] == alphabet[j]){ 
+              avg += (k);
+              break;
+            }
+          } 
+          qty++; 
+        }
       }
-      if (avg !=0 ) avg /= qty;
-      System.out.println(alphabet[j] + ": "+ (avg!=0?avg:"not found"));
+      avg /= qty;
+      System.out.println(alphabet[j] + ": " + ((avg!=0)?avg:"not found"));
     }
   }
 
-  static long exponentiate(long x, long n) {
+  static double exponentiate(int x, int n) {
     if(n==0){
       System.out.println("base");
       return 1;
