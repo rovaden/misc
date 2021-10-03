@@ -73,22 +73,20 @@ class part2 {
       int topCt = 0;
       String word = "";
       for (int r = 0; r < list.size(); r++){
-        String[] sentences = list.get(0).split("\\.\\s+");
-        for (int i = 0; i < sentences.length; i ++){
-          String[] words = sentences[i].split("\\s+");
-          for (int k = 0; k < words.length; k++){
-            int count = 0;
-            char[] letters = words[k].toCharArray();
-            for (int p = 0; p < letters.length; p++){
-              if (letters[p] == alphabet[j]) count++;
-            }
-            if (count > topCt){ 
-              word = words[k];
-              topCt = count;
-            }
+        String[] words = list.get(0).split("\\s+");
+        for (int k = 0; k < words.length; k++){
+          int count = 0;
+          char[] letters = words[k].toCharArray();
+          for (int p = 0; p < letters.length; p++){
+            if (letters[p] == alphabet[j]) count++;
+          }
+          if (count > topCt){ 
+            word = words[k];
+            topCt = count;
           }
         }
       }
+      word = word.replaceAll("\\.", "");
       System.out.println(alphabet[j] + ": " + ((word!="")?word:"not found"));
     }
   }
