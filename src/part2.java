@@ -15,6 +15,8 @@ class part2 {
     // topLetterFind(file);
     // commonPredecessor(file);
     // System.out.println(exponentiate(2, -2));
+    // System.out.println(exponentiateIt(2, 4));
+
   }
 
   static void sentencePrintCount (File param){
@@ -134,5 +136,18 @@ class part2 {
       System.out.println("odd");
       return x* exponentiate(x*x,(n-1)/2); 
     } 
+  }
+
+  static double exponentiateIt(int x, int n){
+    double res = 1;
+    boolean negative = (n <0);
+    for (int i = 0; i < Math.abs(n); i++){
+      res *= x;
+    }
+    if (negative) {
+      return 1/ res;
+    } else {
+      return res;
+    }
   }
 }
