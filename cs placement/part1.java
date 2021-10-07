@@ -1,7 +1,6 @@
-import java.math.*;
 import java.util.List;
 
-class Main {
+class part1 {
   public static void main(String[] args) {
   }
 

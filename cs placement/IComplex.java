@@ -16,6 +16,7 @@ public interface IComplex
     public double Arg();
     public boolean equals(Object o);
     public String toString();
+    
     public static boolean closeEnough(Complex z, Complex w)
     {
         return z.subtract(w).abs() < 1e-12;
