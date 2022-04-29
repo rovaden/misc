@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class haha {
     public static void main(String[] args) {
-        int[] ags = {1,2,3,4,5,6,7};
-        mooo(ags);
+        // int[] ags = {1,2,3,4,5,6,7};
+        // mooo(ags);
     }
 
     public static void mooo(int[] args){
@@ -15,5 +15,13 @@ public class haha {
         int[] solution = {a,b,c};
         System.out.println(a + ", " + b + ", " + c);;
 
+    }
+
+    public static void fizzbuzz(){
+        for (int i = 1; i <101; i++){
+            if (i%3==0){
+                System.out.print("fizz");
+            } if ()
+        }
     }
 }
