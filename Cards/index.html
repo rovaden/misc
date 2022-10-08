@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--this is the main page that is loaded on the client side-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+<!--this is the main title for the page that shows up in the tab bar-->
+    <title>pet card viewer</title>
+<!--this is where the site is layed out-->
+<body>
+<!--centered title grouping-->
+  <div class = "center">
+    <h1>pet card viewer</h1> 
+<!--br for line offset to differentiate main site title from the instructions-->
+    <h2><br>click left and right to look through one of 40+ cards!</h2>
+  </div>
+<!--this is the input grouping-->
+  <div class="center">
+<!--button to go left or back through the card collection-->
+      <button id="left-btn" onclick="view('left')">left</button>
+<!--button to go right or forward through the card collection-->
+      <button id="right-btn" onclick="view('right')">right</button>
+  </div>
+<!--asset display grouping-->
+  <div class="center">
+<!--img element to edit. src is left empty so you know you haven't clicked a button yet-->
+      <img src="" id="card-image">
+  </div>
+<!--code for button functionality-->
+  <script src="../Cards/index.js"></script>
+<!--in-file styling for ease of use-->
+  <style>  
+/*centers elements*/
+    .center {
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      display: flex;
+    }   
+/*resize images so no content overlap*/
+    img {
+      height: 362px;
+      width: auto;
+    }     
+    </style>
+</body>
+</html>
+

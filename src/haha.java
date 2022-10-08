@@ -21,7 +21,7 @@ public class haha {
         for (int i = 1; i <101; i++){
             if (i%3==0){
                 System.out.print("fizz");
-            } if ()
+            } 
         }
     }
 }
